@@ -1,0 +1,40 @@
+<!-- Author: Shifat63) -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Category List</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(categories)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="category, i : ${categories}">
+                                <td th:text="${i.count}"></td>
+                                <td th:text="${category.getName()}"></td>
+                                <td><a th:text="#{edit}" th:href="@{'/category/edit/' + ${category.getCategoryId()} }">Edit</a></td>
+                                <td><a th:text="#{delete}" th:href="@{'/category/delete/' + ${category.getCategoryId()} }">Delete</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

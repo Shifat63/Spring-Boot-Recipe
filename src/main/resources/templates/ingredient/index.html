@@ -1,0 +1,40 @@
+<!-- Author: Shifat63) -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Ingredient List</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(ingredients)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="ingredient, i : ${ingredients}">
+                                <td th:text="${i.count}"></td>
+                                <td th:text="${ingredient.getName()}"></td>
+                                <td><a th:text="#{edit}" th:href="@{'/ingredient/edit/' + ${ingredient.getIngredientId()} }">Edit</a></td>
+                                <td><a th:text="#{delete}" th:href="@{'/ingredient/delete/' + ${ingredient.getIngredientId()} }">Delete</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

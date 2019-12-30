@@ -1,0 +1,62 @@
+<!-- Author: Shifat63) -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <h1>View Recipe</h1>
+    <div class="pannel-group">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table id="recipeDetails" class="table table-hover">
+                    <tr>
+                        <th>Recipe Name: </th>
+                        <td colspan="3" th:text="${recipe.getName()}"></td>
+                    </tr>
+                    <tr>
+                        <th>Preparation Time: </th>
+                        <td th:text="${recipe.getPreparationTime()}"></td>
+                        <th>Cook Time: </th>
+                        <td th:text="${recipe.getCookTime()}"></td>
+                    </tr>
+                    <tr>
+                        <th>URL: </th>
+                        <td th:text="${recipe.getUrl()}"></td>
+                        <th>Difficulty: </th>
+                        <td th:text="${recipe.getDifficulty()}"></td>
+                    </tr>
+                    <tr>
+                        <th>Categories: </th>
+                        <td>
+                            <span th:each="category, i : ${recipe.getCategories()}">
+                                <span th:if="${i.count == i.size}">
+                                    <span th:text="${category.getName()}"></span>
+                                </span>
+                                <span th:unless="${i.count == i.size}">
+                                    <span th:text="${category.getName()} + ','"></span>
+                                </span>
+                            </span>
+                        </td>
+                        <th>Ingredients: </th>
+                        <td>
+                            <span th:each="ingredient, i : ${recipe.getIngredients()}">
+                                <span th:if="${i.count == i.size}">
+                                    <span th:text="${ingredient.getName()}"></span>
+                                </span>
+                                <span th:unless="${i.count == i.size}">
+                                    <span th:text="${ingredient.getName()} + ','"></span>
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description: </th>
+                        <td colspan="3" th:text="${recipe.getDescription()}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
