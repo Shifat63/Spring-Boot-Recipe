@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.shifat63</groupId>
-	<artifactId>spring5-recipe-app</artifactId>
+	<artifactId>spring-boot-recipe-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
